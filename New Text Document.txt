@@ -1,0 +1,103 @@
+what is the Devops ?
+
+-->  DevOps is like a teamwork philosophy for software development and IT operations. It's about making them work closely together, using automation to speed up tasks, and ensuring a smooth and reliable process for building, testing, and delivering software. In simpler terms, it's a way to make software development faster, more efficient, and collaborative.
+
+Docker ?
+
+--> containerisation technology
+. it's tool which we create what we call as containers .
+. Docker is an open platform for developing , shipping and running application.
+. Docker enables you to separate your application form your infrastracture so you can delivery software quickly.
+. with docker you can manage your infrastracture in the same way you manage your application .
+
+Container ?
+
+--> A container docker is a lightweight standolone package that cantains everything needed to run a piece of software including the code run time system tool and libaraies . it allows application to run consistently across different environment and simple simplifies development and scalig.
+
+Virtual Machine ?
+
+--> A virtual machine (vm) is like a computer . it allow you to run multiple operating system and application on a single physical machine providing isolation and flexibility for various tasks amd envirnments .
+. isolated (vm) virtual machine that run independently and are separated form each other and the host system providig enchance security and isolation .
+
+Images / containers ?
+
+--> image is a combination of binarry and liabrary's
+. the original software when you installing that is called a image after the installing finish and it's coming to running condition that is called a containers .
+. By using original software means (image) you can create any number of containers
+
+Docker client / Docker demom ?
+
+--> once software is running condition in background docker client the application of docker client docker command copy and it's will pass that another background proccess which is knows as docker Demon .
+
+Docker Demon ? 
+
+--> Docker demon analysis  what types of command it is and depending of kind of command it will make this command either to work on docker images or some of this command are routed to work on docker containers or some of this knowns as docker registry they are tow types of registry once public and second is private so all is the background commands .
+
+create docker containers
+
+-- docker  run --name myjenkins -d -p 9999:8080 jenkins/jenkins
+-- list of containers --> docker container ls
+-- Delete docker containers --> docker rm - f (container name) myjenkins
+
+create interactive terminal container
+ 
+--> docker run --name u1 -it ubuntu
+
+create database container
+
+--> docker run --name mydb -d mysql ( database image name)
+
+stopped & Running container list command
+
+--> docker ps -a
+
+Docker volumes ?
+
+the docker volume is ephemeral means temprary 
+
+* type of volumes 
+1) simple docker volume
+2) sharable docker volume
+3) docker volume  container
+
+simple docker volume
+
+-- the simple docker volume the only purpose of simple docker volume it's to preserve th data even after container's delete
+
+steps :
+
+create folder
+--> mkdir /data
+
+create container and mount volume ( -v/data) 
+--> docker run --name u1 -it -v/data ubuntu
+
+list of container command
+--> ls
+
+change directory command
+--> cd data
+
+file/ multiple file create command
+--> touch file2 file2 
+
+exit command
+--> exit
+
+docker inspect u1 (container name u1)
+--> search mount section and copy source 
+path
+--> docker rm -f u1 (delete the container)
+--> cd and paste source path copy on mount section
+
+shareable docker volumes
+
+--> docker run --name c2 -it --volumes-from x1 centos
+
+--> share data with volumes multiple container can run with same volume when the need access to shared data
+--> A shared docker volume is a directory that is shared between multiple docker container this allow data to be easily shared between container without having a copy the data between container shared docker volume are the create and managed by docker volume mount command
+
+docker volume containers
+ 
+--> docker volume are a way for docker container to presist and shared data they are like a bridge between the container and the host or other containers ensuring data is retained 
+even if  the container stop or is removed . volumes can be used for database configuration file or any data that needs to surve containers lifecycles they come in different type including nomed volumes, host volumes (bind mount) and tmpfs volumes each suited for specific scenarios.
